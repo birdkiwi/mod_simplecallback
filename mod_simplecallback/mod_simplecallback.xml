@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>Simple Callback</name>
+    <author>Alexey Startler</author>
+    <authorEmail>info@startler.ru</authorEmail>
+    <authorUrl>http://startler.ru/joomla/</authorUrl>
+    <version>0.0.0</version>
+    <creationDate>28.02.2015</creationDate>
+    <description>Простой модуль Joomla для обратного звонка.</description>
+    <files>
+        <filename>mod_simplecallback.xml</filename>
+        <filename module="mod_simplecallback">mod_simplecallback.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+        <fieldset
+                name="basic"
+                label="Настройки модуля Simple Callback"
+                description="Настройки модуля Simple Callback"
+                >
+            <field
+                    type="text"
+                    name="recipients_emails"
+                    label="Получатели email"
+                    description="Адреса email получателей уведомлений, можно несколько, через точку с запятой. Если не указано, то email будет отправлен главному администратору сайта"
+                    default=""
+                    >
+            </field>
+        </fieldset>
+    </config>
+</extension>
