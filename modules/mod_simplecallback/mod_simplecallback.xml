@@ -31,14 +31,6 @@
                     description="MOD_SIMPLECALLBACK_PARAMS_DESC"
                     >
                 <field
-                        type="text"
-                        name="simplecallback_emails"
-                        label="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_LABEL"
-                        description="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_DESC"
-                        default=""
-                        >
-                </field>
-                <field
                         type="radio"
                         name="simplecallback_overlay"
                         label="MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_LABEL"
@@ -48,7 +40,7 @@
                     <option value="0">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_MODULE</option>
                     <option value="1">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_OVERLAY</option>
                 </field>
-                <field type="spacer" name="simplecallback_spacer" hr="true" label="MOD_SIMPLECALLBACK_FORM_PARAMS" />
+                <field type="spacer" name="myspacer1" class="text" label="MOD_SIMPLECALLBACK_FORM_PARAMS" />
                 <field
                         type="text"
                         name="simplecallback_name_field_label"
@@ -76,6 +68,31 @@
                         translate_default="true"
                         >
                 </field>
+                <field type="spacer" name="myspacer2" class="text" label="MOD_SIMPLECALLBACK_EMAIL_PARAMS" />
+                <field
+                        type="text"
+                        name="simplecallback_emails"
+                        label="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_LABEL"
+                        description="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_DESC"
+                        default=""
+                        >
+                </field>
+                <field
+                        type="text"
+                        name="simplecallback_email_subject"
+                        label="MOD_SIMPLECALLBACK_EMAIL_SUBJECT"
+                        description="MOD_SIMPLECALLBACK_EMAIL_SUBJECT_DESC"
+                        default="MOD_SIMPLECALLBACK_EMAIL_SUBJECT_DEFAULT"
+                        translate_default="true"
+                        >
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
             </fieldset>
         </fields>
     </config>

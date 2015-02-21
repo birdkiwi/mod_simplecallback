@@ -4,9 +4,10 @@ defined('_JEXEC') or die;
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::base() . 'media/mod_simplecallback/css/simplecallback.css');
 $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.js');
+JHTML::_('behavior.formvalidation');
 ?>
 
-<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" class="form-inline simplecallback<?php echo $moduleclass_sfx ?>" method="post">
+<form action="index.php?option=com_ajax&module=simplecallback&format=json" class="form-inline simplecallback<?php echo $moduleclass_sfx ?>" method="post" data-simplecallback-form>
     <div class="control-group">
         <label>
             <?php echo $params->get('simplecallback_name_field_label'); ?>
@@ -16,7 +17,7 @@ $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.
     <div class="control-group">
         <label>
             <?php echo $params->get('simplecallback_phone_field_label'); ?>
-            <input type="text" name="simplecallback_name" required class="input-block-level" />
+            <input type="text" name="simplecallback_phone" required class="input-block-level" />
         </label>
     </div>
     <div class="control-group">
