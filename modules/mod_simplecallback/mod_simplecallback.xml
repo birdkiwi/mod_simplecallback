@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>Simple Callback</name>
+    <author>Alexey Startler</author>
+    <authorEmail>info@startler.ru</authorEmail>
+    <authorUrl>http://startler.ru/joomla/</authorUrl>
+    <version>0.0.0</version>
+    <creationDate>28.02.2015</creationDate>
+    <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
+    <files>
+        <filename>mod_simplecallback.xml</filename>
+        <filename module="mod_simplecallback">mod_simplecallback.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <media folder="media" destination="mod_simplecallback">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+    <languages>
+        <language tag="en-GB">en-GB.mod_simplecallback.ini</language>
+        <language tag="ru-RU">ru-RU.mod_simplecallback.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset
+                    name="basic"
+                    label="MOD_SIMPLECALLBACK_PARAMS_LABEL"
+                    description="MOD_SIMPLECALLBACK_PARAMS_DESC"
+                    >
+                <field
+                        type="text"
+                        name="simplecallback_emails"
+                        label="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_LABEL"
+                        description="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_DESC"
+                        default=""
+                        >
+                </field>
+                <field
+                        type="radio"
+                        name="simplecallback_overlay"
+                        label="MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_LABEL"
+                        description="MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_DESC"
+                        default="0"
+                        >
+                    <option value="0">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_MODULE</option>
+                    <option value="1">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_OVERLAY</option>
+                </field>
+                <field type="spacer" name="simplecallback_spacer" hr="true" label="MOD_SIMPLECALLBACK_FORM_PARAMS" />
+                <field
+                        type="text"
+                        name="simplecallback_name_field_label"
+                        label="MOD_SIMPLECALLBACK_NAME_FIELD_LABEL"
+                        description="MOD_SIMPLECALLBACK_NAME_FIELD_LABEL_DESC"
+                        default="MOD_SIMPLECALLBACK_NAME_FIELD"
+                        translate_default="true"
+                        >
+                </field>
+                <field
+                        type="text"
+                        name="simplecallback_phone_field_label"
+                        label="MOD_SIMPLECALLBACK_PHONE_FIELD_LABEL"
+                        description="MOD_SIMPLECALLBACK_PHONE_FIELD_LABEL_DESC"
+                        default="MOD_SIMPLECALLBACK_PHONE_FIELD"
+                        translate_default="true"
+                        >
+                </field>
+                <field
+                        type="text"
+                        name="simplecallback_submit_field_label"
+                        label="MOD_SIMPLECALLBACK_SUBMIT_FIELD_LABEL"
+                        description="MOD_SIMPLECALLBACK_SUBMIT_FIELD_LABEL_DESC"
+                        default="MOD_SIMPLECALLBACK_SUBMIT_FIELD"
+                        translate_default="true"
+                        >
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

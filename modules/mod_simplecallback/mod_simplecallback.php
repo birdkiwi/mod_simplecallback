@@ -5,5 +5,6 @@ defined('_JEXEC') or die;
 require_once( dirname(__FILE__) . '/helper.php' );
 
 $mod_simplecallback = modSimpleCallbackHelper::getHello($params);
-require( JModuleHelper::getLayoutPath('mod_simplecallback'));
+
+require JModuleHelper::getLayoutPath('mod_simplecallback', $params->get('layout', 'default'));
 ?>
