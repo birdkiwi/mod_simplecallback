@@ -5,9 +5,10 @@ $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::base() . 'media/mod_simplecallback/css/simplecallback.css');
 $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.js');
 JHTML::_('behavior.formvalidation');
+$overlayed = $params->get('simplecallback_overlay');
 ?>
 
-<form action="index.php?option=com_ajax&module=simplecallback&format=json" class="form-inline simplecallback<?php echo $moduleclass_sfx ?>" method="post" data-simplecallback-form>
+<form id="simplecallback-<?php echo $module->id; ?>" action="index.php?option=com_ajax&module=simplecallback&format=json" class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>" method="post" data-simplecallback-form <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed style='display: none;'"; } ?>>
     <div class="control-group">
         <label>
             <?php echo $params->get('simplecallback_name_field_label'); ?>

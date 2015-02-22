@@ -9,6 +9,10 @@
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
+
+/**
+ * TODO: captcha, sms-gate
+ */
 class modSimpleCallbackHelper
 {
     public static function getAjax()
