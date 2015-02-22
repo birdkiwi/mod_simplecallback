@@ -22,6 +22,7 @@ $overlayed = $params->get('simplecallback_overlay');
         </label>
     </div>
     <div class="control-group">
+        <?php echo JHtml::_( 'form.token' ); ?>
         <input type="hidden" name="module_id" value="<?php echo $module->id; ?>" />
         <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>

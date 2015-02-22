@@ -33,6 +33,9 @@ class modSimpleCallbackHelper
         $params = new JRegistry();
         $params->loadString($module->params);
 
+        //Token check
+        JSession::checkToken() or die( 'Invalid Token' );
+
         // Load language
         $app->getLanguage()->load('mod_simplecallback');
         // Set Email params
@@ -72,7 +75,7 @@ class modSimpleCallbackHelper
             echo json_encode(array(
                 'success' => true,
                 'error' => false,
-                'message' => $params->get('simplacallback_ajax_success_msg')
+                'message' => $params->get('simplacallback_ajax_success_msg', JText::_( 'MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_DEFAULT' ))
             ));
             die();
         }
@@ -81,7 +84,7 @@ class modSimpleCallbackHelper
             echo json_encode(array(
                 'success' => false,
                 'error' => true,
-                'message' => $params->get('simplacallback_ajax_error_msg')
+                'message' => $params->get('simplacallback_ajax_error_msg', JText::_( 'MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_DEFAULT' ))
             ));
             die();
         }
