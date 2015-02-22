@@ -21,6 +21,7 @@ JHTML::_('behavior.formvalidation');
         </label>
     </div>
     <div class="control-group">
+        <input type="hidden" name="module_id" value="<?php echo $module->id; ?>" />
         <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>
 </form>

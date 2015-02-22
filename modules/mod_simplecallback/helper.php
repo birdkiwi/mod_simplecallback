@@ -15,12 +15,20 @@ class modSimpleCallbackHelper
     {
         jimport('joomla.application.module.helper');
         $config = JFactory::getConfig();
-        $module = JModuleHelper::getModule('mod_simplecallback');
-        $params = new JRegistry();
-        $params->loadString($module->params);
         $app = JFactory::getApplication();
         $input = JFactory::getApplication()->input;
         $data = $input->post->getArray();
+
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select($db->quoteName(array('id', 'title', 'params')));
+        $query->from($db->quoteName('#__modules'));
+        $query->where($db->quoteName('id') . '='. $data['module_id']);
+        $db->setQuery($query);
+        $module = $db->loadObjectList()[0];
+        $params = new JRegistry();
+        $params->loadString($module->params);
+
         // Load language
         $app->getLanguage()->load('mod_simplecallback');
         // Set Email params
@@ -28,11 +36,14 @@ class modSimpleCallbackHelper
         $fromname = $params->get('simplacallback_emailfrom');
         $recipients_array = explode(";", $params->get('simplecallback_emails'));
         $recipients = !empty($recipients_array) && !empty($recipients_array[0]) ? $recipients_array : array($config->get('mailfrom'), $config->get('fromname'));
-        $subject = $params->get('simplacallback_email_subject');
-
+        $subject = $params->get('simplecallback_email_subject');
+        $client_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
         $phone = $data['simplecallback_phone'];
         $name = $data['simplecallback_name'];
-        $body = "\n Name: " . $name . "\nNummer: " . $phone;
+        $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
+        $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
+        $body .= "\n IP: " . $client_ip;
+        $body .= "\n\n " . date('d.m.Y H:i');
         // Prepare and send Email
         $mail = JFactory::getMailer();
         $mail->addRecipient($recipients);
@@ -41,8 +52,8 @@ class modSimpleCallbackHelper
             $mail->setSender(array($sender, $fromname));
         } else {
             $sender = array(
-                $config->get( 'config.mailfrom' ),
-                $config->get( 'config.fromname' )
+                $config->get( 'mailfrom' ),
+                $config->get( 'fromname' )
             );
 
             $mail->setSender($sender);
@@ -57,7 +68,7 @@ class modSimpleCallbackHelper
             echo json_encode(array(
                 'success' => true,
                 'error' => false,
-                'message' => JText::_('MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS')
+                'message' => $params->get('simplacallback_ajax_success_msg')
             ));
             die();
         }
@@ -66,7 +77,7 @@ class modSimpleCallbackHelper
             echo json_encode(array(
                 'success' => false,
                 'error' => true,
-                'message' => JText::_('MOD_SIMPLECALLBACK_AJAX_MSG_ERROR')
+                'message' => $params->get('simplacallback_ajax_error_msg')
             ));
             die();
         }

@@ -15,12 +15,11 @@
                     dataType: 'json',
                     success: function(data) {
                         if(data.error === false) {
-                            alert('Благодарим вас, ваше сообщение было отправлено. Наш менеджер свяжется при необходимости');
+                            alert(data.message);
                             form[0].reset();
                         } else {
-                            alert('Произошла ошибка, пожалуйста, попробуйте снова или позвоните нам!');
-                            alert(data.messages);
-                            console.log(data.messages);
+                            alert(data.message);
+                            console.log(data.message);
                         }
                         //overlay.fadeOut();
                     }

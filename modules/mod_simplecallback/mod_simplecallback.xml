@@ -86,6 +86,25 @@
                         translate_default="true"
                         >
                 </field>
+                <field type="spacer" name="myspacer3" class="text" label="MOD_SIMPLECALLBACK_AJAX_MESSAGES" />
+                <field
+                        type="textarea"
+                        rows="3"
+                        name="simplacallback_ajax_success_msg"
+                        label="MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_LABEL"
+                        default="MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_DEFAULT"
+                        translate_default="true"
+                        >
+                </field>
+                <field
+                        type="textarea"
+                        rows="3"
+                        name="simplacallback_ajax_error_msg"
+                        label="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_LABEL"
+                        default="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_DEFAULT"
+                        translate_default="true"
+                        >
+                </field>
             </fieldset>
             <fieldset name="advanced">
                 <field
