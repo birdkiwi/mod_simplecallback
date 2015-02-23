@@ -69,6 +69,7 @@ class modSimpleCallbackHelper
         $name = $data['simplecallback_name'];
         $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
         $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
+        //$body .= "\n URL: " . $page_title . ": ".JURI::getInstance()->toString();
         $body .= "\n IP: " . $client_ip;
         $body .= "\n\n " . date('d.m.Y H:i');
         // Prepare and send Email

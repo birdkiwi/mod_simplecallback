@@ -12,8 +12,15 @@
         <filename module="mod_simplecallback">mod_simplecallback.php</filename>
         <filename>index.html</filename>
         <filename>helper.php</filename>
+        <filename>captcha.php</filename>
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
+        <folder>language</folder>
+        <folder>lib</folder>
+        <media folder="media/mod_simplecallback" destination="mod_simplecallback">
+            <folder>css</folder>
+            <folder>js</folder>
+        </media>
     </files>
     <media folder="media" destination="mod_simplecallback">
         <folder>css</folder>
