@@ -15,20 +15,19 @@
         <filename>captcha.php</filename>
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
+        <filename>README.md</filename>
         <folder>language</folder>
         <folder>lib</folder>
-        <media folder="media/mod_simplecallback" destination="mod_simplecallback">
-            <folder>css</folder>
-            <folder>js</folder>
-        </media>
     </files>
-    <media folder="media" destination="mod_simplecallback">
+    <media folder="media/mod_simplecallback" destination="mod_simplecallback">
         <folder>css</folder>
         <folder>js</folder>
     </media>
     <languages>
-        <language tag="en-GB">en-GB.mod_simplecallback.ini</language>
-        <language tag="ru-RU">ru-RU.mod_simplecallback.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_simplecallback.sys.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_simplecallback.ini</language>
+        <language tag="ru-RU">language/ru-RU/ru-RU.mod_simplecallback.ini</language>
+        <language tag="ru-RU">language/ru-RU/ru-RU.mod_simplecallback.sys.ini</language>
     </languages>
     <config>
         <fields name="params">
