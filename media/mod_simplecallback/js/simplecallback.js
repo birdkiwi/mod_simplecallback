@@ -19,31 +19,31 @@
 
         window.simplecallback = simplecallback;
 
-        $('[data-simplecallback-form]').each(function() {
+        $('[data-simplecallback-form]').on('submit', function() {
             var form = $(this),
                 actionUrl = form.attr('action'),
-                overlay = form.data('simplecallback-overlayed');
+                captcha = form.find('.simplecallback-captcha');
 
-            //console.log(form);
-
-            $(this).on('submit', function() {
-                $.ajax({
-                    type: "POST",
-                    url: actionUrl,
-                    data: form.serialize(),
-                    dataType: 'json',
-                    success: function(data) {
-                        if(data.error === false) {
-                            alert(data.message);
-                            form[0].reset();
-                        } else {
-                            alert(data.message);
-                            console.log(data.message);
-                        }
+            $.ajax({
+                type: "POST",
+                url: actionUrl,
+                data: form.serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    if(data.error === false) {
+                        alert(data.message);
+                        form[0].reset();
+                        simplecallback.hide();
+                    } else {
+                        alert(data.message);
+                        //console.log(data.message);
                     }
-                });
-                return false;
+                }
             });
+
+            captcha.attr('src', captcha.attr('src') + '?rand=' + Math.random());
+
+            return false;
         });
 
         $('[data-simplecallback-form-overlayed]').each(function() {
@@ -55,16 +55,22 @@
             $('body').prepend(overlay);
         }
 
-        $('[data-simplecallback]').each(function() {
-            $(this).on('click', function() {
-                var formId = $(this).data('simplecallback');
+        $('[data-simplecallback-open]').on('click', function() {
+            var formId = $(this).data('simplecallback');
 
-                if (formId) {
-                    simplecallback.show(formId);
-                } else {
-                    simplecallback.show();
-                }
-            });
+            if (formId) {
+                simplecallback.show(formId);
+            } else {
+                simplecallback.show();
+            }
+
+            return false;
+        });
+
+        $('[data-simplecallback-close]').on('click', function() {
+            simplecallback.hide();
+
+            return false;
         });
     });
 })(jQuery);

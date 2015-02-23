@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.0" client="site" method="upgrade">
-    <name>Simple Callback</name>
+    <name>Simple Callback Module</name>
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
     <authorUrl>http://startler.ru/joomla/</authorUrl>
@@ -39,6 +39,16 @@
                         >
                     <option value="0">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_MODULE</option>
                     <option value="1">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_OVERLAY</option>
+                </field>
+                <field
+                        type="radio"
+                        name="simplecallback_captcha"
+                        label="MOD_SIMPLECALLBACK_CAPTCHA_LABEL"
+                        description="MOD_SIMPLECALLBACK_CAPTCHA_DESC"
+                        default="0"
+                        >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
                 </field>
                 <field type="spacer" name="myspacer1" class="text" label="MOD_SIMPLECALLBACK_FORM_PARAMS" />
                 <field
@@ -102,6 +112,15 @@
                         name="simplacallback_ajax_error_msg"
                         label="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_LABEL"
                         default="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_DEFAULT"
+                        translate_default="true"
+                        >
+                </field>
+                <field
+                        type="textarea"
+                        rows="3"
+                        name="simplacallback_captcha_error_msg"
+                        label="MOD_SIMPLECALLBACK_CAPTCHA_MSG_ERROR_LABEL"
+                        default="MOD_SIMPLECALLBACK_CAPTCHA_MSG_ERROR_DEFAULT"
                         translate_default="true"
                         >
                 </field>

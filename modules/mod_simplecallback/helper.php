@@ -11,7 +11,7 @@
  */
 
 /**
- * TODO: captcha, sms-gate
+ * TODO: sms-gate
  */
 class modSimpleCallbackHelper
 {
@@ -22,6 +22,7 @@ class modSimpleCallbackHelper
         $app = JFactory::getApplication();
         $input = JFactory::getApplication()->input;
         $data = $input->post->getArray();
+        $session = JFactory::getSession();
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
@@ -33,14 +34,33 @@ class modSimpleCallbackHelper
         $params = new JRegistry();
         $params->loadString($module->params);
 
+        //CAPTCHA
+        $captcha_enabled = $params->get('simplecallback_captcha', 0);
+
+        if ($captcha_enabled === "1") {
+            if ($session->get('module-'.$module->id) != $data['simplecallback_captcha']) {
+                echo json_encode(array(
+                    'success' => false,
+                    'error' => true,
+                    'message' => $params->get('simplacallback_captcha_error_msg', JText::_( 'MOD_SIMPLECALLBACK_CAPTCHA_MSG_ERROR_DEFAULT' ))
+                ));
+                die();
+            } else {
+                $session->clear('module-'.$module->id);
+            }
+        }
+
         //Token check
-        JSession::checkToken() or die( 'Invalid Token' );
+        $session->checkToken() or die( 'Invalid Token' );
 
         // Load language
         $app->getLanguage()->load('mod_simplecallback');
         // Set Email params
-        $sender = $params->get('simplacallback_mailsender');
-        $fromname = $params->get('simplacallback_emailfrom');
+
+        //Not using this 2 params at moment, but maybe in future
+        $sender = $params->get('simplecallback_mailsender');
+        $fromname = $params->get('simplecallback_emailfrom');
+
         $recipients_array = explode(";", $params->get('simplecallback_emails'));
         $recipients = !empty($recipients_array) && !empty($recipients_array[0]) ? $recipients_array : array($config->get('mailfrom'), $config->get('fromname'));
         $subject = $params->get('simplecallback_email_subject');
@@ -69,6 +89,7 @@ class modSimpleCallbackHelper
         $mail->setSubject($subject);
         $mail->setBody($body);
         $sent = $mail->Send();
+        //debug :) $sent = true;
         if (true == $sent)
         {
             http_response_code(200);
