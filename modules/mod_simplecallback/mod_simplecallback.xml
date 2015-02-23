@@ -4,8 +4,8 @@
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
     <authorUrl>http://startler.ru/joomla/</authorUrl>
-    <version>0.0.0</version>
-    <creationDate>28.02.2015</creationDate>
+    <version>1.0.0</version>
+    <creationDate>24.02.2015</creationDate>
     <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
     <files>
         <filename>mod_simplecallback.xml</filename>
