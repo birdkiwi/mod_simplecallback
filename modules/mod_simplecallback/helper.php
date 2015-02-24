@@ -65,8 +65,8 @@ class modSimpleCallbackHelper
         $recipients = !empty($recipients_array) && !empty($recipients_array[0]) ? $recipients_array : array($config->get('mailfrom'), $config->get('fromname'));
         $subject = $params->get('simplecallback_email_subject');
         $client_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
-        $phone = $data['simplecallback_phone'];
-        $name = $data['simplecallback_name'];
+        $phone = strip_tags($data['simplecallback_phone']);
+        $name = strip_tags($data['simplecallback_name']);
         $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
         $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
         //$body .= "\n URL: " . $page_title . ": ".JURI::getInstance()->toString();

@@ -1,8 +1,11 @@
 #Simple Callback Module#
 Простой модуль обратного звонка или для обратной связи. Совместим с Joomla 3.0 и выше.
 
-Демо: [joomla.startler.ru](http://joomla.startler.ru/)
+![mod_simplecallback screenshot](http://joomla.startler.ru/images/screenshots/mod_simplecallback-1.png)
+![mod_simplecallback screenshot](http://joomla.startler.ru/images/screenshots/mod_simplecallback-2.png)
+![mod_simplecallback screenshot](http://joomla.startler.ru/images/screenshots/mod_simplecallback-3.png)
 
+Демо: [joomla.startler.ru](http://joomla.startler.ru/)
 Скачать: [v1.0.0-beta](https://github.com/birdkiwi/mod_simplecallback/releases/download/v1.0.0-beta/mod_simplecallback.tar.gz)
 
 **Основные преимущества:**
