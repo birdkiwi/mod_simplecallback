@@ -69,6 +69,9 @@ class modSimpleCallbackHelper
         $name = strip_tags($data['simplecallback_name']);
         $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
         $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
+        $smsru_enable = $params->get('simplecallback_smsru_enable');
+        $smsru_api_id = $params->get('simplecallback_smsru_api_id');
+        $smsru_phone = $params->get('simplecallback_smsru_phone');
         //$body .= "\n URL: " . $page_title . ": ".JURI::getInstance()->toString();
         $body .= "\n IP: " . $client_ip;
         $body .= "\n\n " . date('d.m.Y H:i');
@@ -91,8 +94,17 @@ class modSimpleCallbackHelper
         $mail->setBody($body);
         $sent = $mail->Send();
         //debug :) $sent = true;
+
         if (true == $sent)
         {
+
+            //SMS.RU SEND
+            if ($smsru_enable === '1' && !empty($smsru_api_id)) {
+                $smsru_text = urlencode($subject . ' ' . $name . ' ' . $phone);
+                $smsru_request_url = 'http://sms.ru/sms/send?api_id=' . $smsru_api_id . '&to=' . $smsru_phone . '&text=' . $smsru_text;
+                $smsru_result = file_get_contents($smsru_request_url);
+            }
+
             http_response_code(200);
             echo json_encode(array(
                 'success' => true,
