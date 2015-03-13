@@ -9,10 +9,6 @@
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-
-/**
- * TODO: sms-gate
- */
 class modSimpleCallbackHelper
 {
     public static function getAjax()
@@ -30,7 +26,7 @@ class modSimpleCallbackHelper
         $query->from($db->quoteName('#__modules'));
         $query->where($db->quoteName('id') . '='. $data['module_id']);
         $db->setQuery($query);
-        $module = $db->loadObjectList()[0];
+        $module = $db->loadObject();
         $params = new JRegistry();
         $params->loadString($module->params);
 
@@ -105,7 +101,6 @@ class modSimpleCallbackHelper
                 $smsru_result = file_get_contents($smsru_request_url);
             }
 
-            http_response_code(200);
             echo json_encode(array(
                 'success' => true,
                 'error' => false,
