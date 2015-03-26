@@ -11,7 +11,7 @@ $captcha_enabled = $params->get('simplecallback_captcha', 0);
 
 <form
     id="simplecallback-<?php echo $module->id; ?>"
-    action="index.php?option=com_ajax&module=simplecallback&format=json"
+    action="<?php echo JURI::root(); ?>index.php?option=com_ajax&module=simplecallback&format=json"
     class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
     method="post"
     data-simplecallback-form <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed style='display: none;'"; } ?>

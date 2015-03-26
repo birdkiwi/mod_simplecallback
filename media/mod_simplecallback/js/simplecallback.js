@@ -55,7 +55,7 @@
             $('body').prepend(overlay);
         }
 
-        $('[data-simplecallback-open]').on('click', function() {
+        $(document).on('click', '[data-simplecallback-open]', function() {
             var formId = $(this).data('simplecallback');
 
             if (formId) {
@@ -67,7 +67,7 @@
             return false;
         });
 
-        $('[data-simplecallback-close]').on('click', function() {
+        $(document).on('click', '[data-simplecallback-close]', function() {
             simplecallback.hide();
 
             return false;
