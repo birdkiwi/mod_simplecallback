@@ -12,6 +12,10 @@ module.exports = function(grunt) {
         },
 // Copy to build folder
         copy: {
+            readme: {
+                src: ['README.md'],
+                dest: 'build/'
+            },
             module: {
                 expand: true,
                 cwd: 'modules/mod_simplecallback/',
@@ -55,6 +59,7 @@ module.exports = function(grunt) {
 // Build task
     grunt.registerTask( 'build', [
         'clean:build',
+        'copy:readme',
         'copy:module',
         'copy:media',
         'copy:languageEn',
