@@ -6,7 +6,7 @@
 ![mod_simplecallback screenshot](http://joomla.startler.ru/images/screenshots/mod_simplecallback-3.png)
 
 Демо: [joomla.startler.ru](http://joomla.startler.ru/)
-Скачать: [v1.1.1-beta](https://github.com/birdkiwi/mod_simplecallback/releases/download/1.1.0-beta/mod_simplecallback-1.1.0.tar.gz)
+Скачать: [v1.1.1-beta](https://github.com/birdkiwi/mod_simplecallback/releases/download/1.1.1-beta/mod_simplecallback-1.1.1.zip)
 
 **Основные преимущества:**
 
