@@ -7,6 +7,9 @@ $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.
 JHTML::_('behavior.formvalidation');
 $overlayed = $params->get('simplecallback_overlay');
 $captcha_enabled = $params->get('simplecallback_captcha', 0);
+$header_tag = $params->get('header_tag', 'h3');
+$header_class = $params->get('header_class', '');
+$show_title = $module->showtitle;
 ?>
 
 <form
@@ -19,6 +22,9 @@ $captcha_enabled = $params->get('simplecallback_captcha', 0);
 
     <?php if ($overlayed == 1) :?>
         <div class="simplecallback-close" data-simplecallback-close>&times;</div>
+        <?php if ($module->showtitle) {
+            echo "<$header_tag class='$header_class'>$module->title</$header_tag>";
+        } ?>
     <?php endif; ?>
 
     <div class="control-group">
