@@ -7,6 +7,7 @@ $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.
 JHTML::_('behavior.formvalidation');
 $overlayed = $params->get('simplecallback_overlay');
 $captcha_enabled = $params->get('simplecallback_captcha', 0);
+$phone_mask = $params->get('simplecallback_phone_field_mask');
 $header_tag = $params->get('header_tag', 'h3');
 $header_class = $params->get('header_class', '');
 $show_title = $module->showtitle;
@@ -17,6 +18,7 @@ $show_title = $module->showtitle;
     action="<?php echo JURI::root(); ?>index.php?option=com_ajax&module=simplecallback&format=json"
     class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
     method="post"
+    <?php if (!empty($phone_mask) && $phone_mask != '') { echo "data-simplecallback-phone-mask='$phone_mask'"; } ?>
     data-simplecallback-form <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed style='display: none;'"; } ?>
     >
 

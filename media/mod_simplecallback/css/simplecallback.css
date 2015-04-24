@@ -11,10 +11,10 @@
 
 .simplecallback-overlayed {
     width: 260px;
-    position: fixed;
+    position: absolute;
     left: 50%;
+    top: 30px;
     margin-left: -130px;
-    top: 100px;
     z-index: 10010;
     background: #fff;
     padding: 30px;

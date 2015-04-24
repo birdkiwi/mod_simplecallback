@@ -6,7 +6,7 @@
 ![mod_simplecallback screenshot](http://joomla.startler.ru/images/screenshots/mod_simplecallback-3.png)
 
 Демо: [joomla.startler.ru](http://joomla.startler.ru/)
-Скачать: [v1.1.1-beta](https://github.com/birdkiwi/mod_simplecallback/releases/download/1.1.1-beta/mod_simplecallback-1.1.1.zip)
+Скачать: [v1.1.1-beta](https://github.com/birdkiwi/mod_simplecallback/releases/download/1.1.2-beta/mod_simplecallback-1.1.2.zip)
 
 **Основные преимущества:**
 
@@ -68,5 +68,5 @@
 
 **Что будет дальше:**
 
- - Компонент com_simplecontact в котором будут сохраняться все
+ - Компонент com_simplecallback в котором будут сохраняться все
    отправленные данные

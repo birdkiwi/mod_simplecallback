@@ -4,7 +4,7 @@
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
     <authorUrl>http://startler.ru/joomla/</authorUrl>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <creationDate>24.02.2015</creationDate>
     <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
     <files>
@@ -73,6 +73,14 @@
                         description="MOD_SIMPLECALLBACK_PHONE_FIELD_LABEL_DESC"
                         default="MOD_SIMPLECALLBACK_PHONE_FIELD"
                         translate_default="true"
+                        >
+                </field>
+                <field
+                        type="text"
+                        name="simplecallback_phone_field_mask"
+                        label="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK"
+                        description="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK_DESC"
+                        hint="+7 (999) 999-99-99"
                         >
                 </field>
                 <field
