@@ -247,7 +247,7 @@
         }
 
         $(document).on('click', '[data-simplecallback-open]', function() {
-            var formId = $(this).data('simplecallback');
+            var formId = $(this).data('simplecallback-open');
 
             if (formId) {
                 simplecallback.show(formId);
