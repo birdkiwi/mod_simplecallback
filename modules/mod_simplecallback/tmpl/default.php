@@ -1,6 +1,8 @@
 <?php
 // No direct access
 defined('_JEXEC') or die;
+$app = JFactory::getApplication();
+$menu = $app->getMenu()->getActive()->id;
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::base() . 'media/mod_simplecallback/css/simplecallback.css');
 $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.js');
@@ -50,6 +52,7 @@ $show_title = $module->showtitle;
     <div class="control-group">
         <?php echo JHtml::_( 'form.token' ); ?>
         <input type="hidden" name="module_id" value="<?php echo $module->id; ?>" />
+        <input type="hidden" name="Itemid" value="<?php echo $menu; ?>">
         <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>
 </form>
