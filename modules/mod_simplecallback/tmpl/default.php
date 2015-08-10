@@ -53,6 +53,8 @@ $show_title = $module->showtitle;
         <?php echo JHtml::_( 'form.token' ); ?>
         <input type="hidden" name="module_id" value="<?php echo $module->id; ?>" />
         <input type="hidden" name="Itemid" value="<?php echo $menu; ?>">
+        <input type="hidden" name="simplecallback_page_title" value="<?php echo $document->getTitle(); ?>">
+        <input type="hidden" name="simplecallback_page_url" value="<?php echo JUri::getInstance(); ?>">
         <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>
 </form>

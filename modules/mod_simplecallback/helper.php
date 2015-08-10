@@ -63,6 +63,8 @@ class modSimpleCallbackHelper
         $client_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
         $phone = strip_tags($data['simplecallback_phone']);
         $name = strip_tags($data['simplecallback_name']);
+        $page_title = strip_tags($data['simplecallback_page_title']);
+        $page_url = strip_tags($data['simplecallback_page_url']);
         $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
         $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
         $smsru_enable = $params->get('simplecallback_smsru_enable');
@@ -70,6 +72,8 @@ class modSimpleCallbackHelper
         $smsru_phone = $params->get('simplecallback_smsru_phone');
         //$body .= "\n URL: " . $page_title . ": ".JURI::getInstance()->toString();
         $body .= "\n IP: " . $client_ip;
+        $body .= "\n Title: " . $page_title;
+        $body .= "\n URL: " . $page_url;
         $body .= "\n\n " . date('d.m.Y H:i');
         // Prepare and send Email
         $mail = JFactory::getMailer();
