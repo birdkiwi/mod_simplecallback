@@ -8,6 +8,7 @@ $document->addStyleSheet(JUri::base() . 'media/mod_simplecallback/css/simplecall
 $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.js');
 JHTML::_('behavior.formvalidation');
 $overlayed = $params->get('simplecallback_overlay');
+$message_enabled = $params->get('simplecallback_message', 0);
 $captcha_enabled = $params->get('simplecallback_captcha', 0);
 $phone_mask = $params->get('simplecallback_phone_field_mask');
 $header_tag = $params->get('header_tag', 'h3');
@@ -43,18 +44,31 @@ $show_title = $module->showtitle;
             <input type="text" name="simplecallback_phone" required class="input-block-level" autocomplete="off" />
         </label>
     </div>
+
+    <?php if ($message_enabled == 1) : ?>
+        <div class="control-group">
+            <label>
+                <?php echo $params->get('simplecallback_message_field_label'); ?>
+            </label>
+            <textarea type="text" name="simplecallback_message" class="input-block-level" autocomplete="off"></textarea>
+        </div>
+    <?php endif; ?>
+
     <?php if ($captcha_enabled == 1) : ?>
         <div class="control-group">
             <img src="<?php echo JUri::base() . 'modules/mod_simplecallback/captcha.php?id=' . $module->id; ?>" width="150" height="40" alt="captcha" class="simplecallback-captcha">
             <input type="text" name="simplecallback_captcha" required class="input-block-level" autocomplete="off" />
         </div>
     <?php endif; ?>
+
     <div class="control-group">
+        <input type="text" name="simplecallback_username" class="simplecallback-username" maxlength="10">
         <?php echo JHtml::_( 'form.token' ); ?>
         <input type="hidden" name="module_id" value="<?php echo $module->id; ?>" />
         <input type="hidden" name="Itemid" value="<?php echo $menu; ?>">
         <input type="hidden" name="simplecallback_page_title" value="<?php echo $document->getTitle(); ?>">
         <input type="hidden" name="simplecallback_page_url" value="<?php echo JUri::getInstance()->toString(); ?>">
+        <input type="hidden" name="simplecallback_custom_data" value="">
         <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>
 </form>

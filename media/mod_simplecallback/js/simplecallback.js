@@ -185,10 +185,15 @@
     $(function () {
 
         var simplecallback = {
-            show: function(id) {
+            show: function(id, customData) {
                 $('.simplecallback-overlay').fadeIn();
                 var modalWindow = (id) ? $('body > #simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
                 var modalWindowHeight = modalWindow.innerHeight();
+
+                if (customData) {
+                    var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
+                    customDataField.val(customData);
+                }
 
                 modalWindow.fadeIn();
                 modalWindow.animate({
@@ -248,12 +253,9 @@
 
         $(document).on('click', '[data-simplecallback-open]', function() {
             var formId = $(this).data('simplecallback-open');
+            var customData = $(this).data('simplecallback-custom-data');
 
-            if (formId) {
-                simplecallback.show(formId);
-            } else {
-                simplecallback.show();
-            }
+            simplecallback.show(formId, customData);
 
             return false;
         });

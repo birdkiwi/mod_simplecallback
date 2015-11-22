@@ -38,3 +38,8 @@
 .simplecallback-captcha {
     margin-bottom: 10px;
 }
+
+/* BZZZzzZzz... Honeypot Input! :) */
+.simplecallback-username {
+    display: none !important;
+}

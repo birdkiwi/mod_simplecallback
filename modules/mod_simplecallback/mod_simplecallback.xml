@@ -3,8 +3,8 @@
     <name>Simple Callback Module</name>
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
-    <authorUrl>http://startler.ru/joomla/</authorUrl>
-    <version>1.1.2</version>
+    <authorUrl>https://github.com/birdkiwi/mod_simplecallback</authorUrl>
+    <version>1.3.0</version>
     <creationDate>24.02.2015</creationDate>
     <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
     <files>
@@ -81,6 +81,25 @@
                         label="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK"
                         description="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK_DESC"
                         hint="+7 (999) 999-99-99"
+                        >
+                </field>
+                <field
+                        type="radio"
+                        name="simplecallback_message"
+                        label="MOD_SIMPLECALLBACK_MESSAGE_ENABLE_LABEL"
+                        description="MOD_SIMPLECALLBACK_MESSAGE_ENABLE_DESC"
+                        default="0"
+                        >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        type="text"
+                        name="simplecallback_message_field_label"
+                        label="MOD_SIMPLECALLBACK_MESSAGE_FIELD_LABEL"
+                        description="MOD_SIMPLECALLBACK_MESSAGE_FIELD_LABEL_DESC"
+                        default="MOD_SIMPLECALLBACK_MESSAGE_FIELD"
+                        translate_default="true"
                         >
                 </field>
                 <field

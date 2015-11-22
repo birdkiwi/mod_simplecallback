@@ -57,16 +57,26 @@ class modSimpleCallbackHelper
         $sender = $params->get('simplecallback_mailsender');
         $fromname = $params->get('simplecallback_emailfrom');
 
+        $honeypot = strip_tags($data['simplecallback_username']);
+
+        if (!empty($honeypot)) {
+            die("GTFO");
+        }
+
         $recipients_array = explode(";", $params->get('simplecallback_emails'));
         $recipients = !empty($recipients_array) && !empty($recipients_array[0]) ? $recipients_array : array($config->get('mailfrom'), $config->get('fromname'));
         $subject = $params->get('simplecallback_email_subject');
         $client_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
         $phone = strip_tags($data['simplecallback_phone']);
         $name = strip_tags($data['simplecallback_name']);
+        $message = strip_tags($data['simplecallback_message']);
         $page_title = strip_tags($data['simplecallback_page_title']);
+        $custom_data = strip_tags($data['simplecallback_custom_data']);
         $page_url = strip_tags($data['simplecallback_page_url']);
         $body = "\n" . $params->get('simplecallback_name_field_label') . ": " . $name;
         $body .= "\n" . $params->get('simplecallback_phone_field_label') . ": " . $phone;
+        $body .= "\n" . $params->get('simplecallback_message_field_label') . ": " . $message;
+        $body .= "\n" . JText::_( 'MOD_SIMPLECALLBACK_CUSTOM_DATA_LABEL' ) . ": " . $custom_data;
         $smsru_enable = $params->get('simplecallback_smsru_enable');
         $smsru_api_id = $params->get('simplecallback_smsru_api_id');
         $smsru_phone = $params->get('simplecallback_smsru_phone');
