@@ -189,10 +189,12 @@
                 $('.simplecallback-overlay').fadeIn();
                 var modalWindow = (id) ? $('body > #simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
                 var modalWindowHeight = modalWindow.innerHeight();
+                var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
 
                 if (customData) {
-                    var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
                     customDataField.val(customData);
+                } else {
+                    customDataField.val("");
                 }
 
                 modalWindow.fadeIn();
