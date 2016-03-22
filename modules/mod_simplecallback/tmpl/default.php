@@ -2,6 +2,7 @@
 // No direct access
 defined('_JEXEC') or die;
 $app = JFactory::getApplication();
+JHtml::_('jquery.framework');
 $menu = $app->getMenu()->getActive()->id;
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::base() . 'media/mod_simplecallback/css/simplecallback.css');
