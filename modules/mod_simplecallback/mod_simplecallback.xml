@@ -4,7 +4,7 @@
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
     <authorUrl>https://github.com/birdkiwi/mod_simplecallback</authorUrl>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <creationDate>24.02.2015</creationDate>
     <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
     <files>
@@ -189,6 +189,11 @@
                         type="textarea" rows="3"
                         label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
                         description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
             </fieldset>
         </fields>
     </config>

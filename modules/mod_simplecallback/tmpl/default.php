@@ -26,6 +26,9 @@ $show_title = $module->showtitle;
     >
 
     <?php if ($overlayed == 1) :?>
+        <div class="simplecallback-loading-svg">
+            <?php include JPATH_SITE . '/media/mod_simplecallback/images/loading.svg'; ?>
+        </div>
         <div class="simplecallback-close" data-simplecallback-close>&times;</div>
         <?php if ($module->showtitle) {
             echo "<$header_tag class='$header_class'>$module->title</$header_tag>";

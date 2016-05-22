@@ -186,7 +186,9 @@
 
         var simplecallback = {
             show: function(id, customData) {
-                $('.simplecallback-overlay').fadeIn();
+                if (id && $('body > #simplecallback-' + id).length > 0) {
+                    $('.simplecallback-overlay').fadeIn();
+                }
                 var modalWindow = (id) ? $('body > #simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
                 var modalWindowHeight = modalWindow.innerHeight();
                 var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
@@ -220,7 +222,11 @@
         $('[data-simplecallback-form]').on('submit', function() {
             var form = $(this),
                 actionUrl = form.attr('action'),
-                captcha = form.find('.simplecallback-captcha');
+                captcha = form.find('.simplecallback-captcha'),
+                submitBtn = form.find('[type="submit"]');
+
+            form.addClass('simplecallback-loading');
+            submitBtn.attr('disabled', true);
 
             $.ajax({
                 type: "POST",
@@ -236,6 +242,9 @@
                         alert(data.message);
                         //console.log(data.message);
                     }
+                    
+                    form.removeClass('simplecallback-loading');
+                    submitBtn.attr('disabled', false);
                 }
             });
 
@@ -267,5 +276,22 @@
 
             return false;
         });
+
+        window.addEventListener("load", function (event) {
+            if (window.location.hash.indexOf('#simplecallback-') > -1) {
+                var moduleId = parseInt( window.location.hash.replace(/[^0-9\.]/g, ''), 10 );
+                //console.log(moduleId);
+                simplecallback.show(moduleId);
+            }
+        }, false);
+
+        $(document).on('click', 'a[href^="#simplecallback-"]', function() {
+            var moduleId = parseInt( $(this).attr('href').replace(/[^0-9\.]/g, ''), 10 );
+            //console.log(moduleId);
+            simplecallback.show(moduleId);
+
+            return false;
+        });
+
     });
 })(jQuery);
