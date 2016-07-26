@@ -105,9 +105,21 @@ class modSimpleCallbackHelper
         $sent = $mail->Send();
         //debug :) $sent = true;
 
-        if (true == $sent)
-        {
+        if (JComponentHelper::isEnabled('com_simplecallback', true)) {
+            $db_message = new stdClass();
+            $db_message->name = $name;
+            $db_message->phone = $phone;
+            $db_message->message= $message;
+            $db_message->ip = $client_ip;
+            $db_message->page = $page_url;
+            $db_message->custom = $custom_data;
+            $db_message->created = JFactory::getDate()->toSql();
+            $db_message->updated = $db_message->created;
 
+            $db_result = JFactory::getDbo()->insertObject('#__simplecallback_messages', $db_message);
+        }
+
+        if (true == $sent) {
             //SMS.RU SEND
             if ($smsru_enable === '1' && !empty($smsru_api_id)) {
                 $smsru_text = urlencode($subject . ' ' . $name . ' ' . $phone);
@@ -121,9 +133,7 @@ class modSimpleCallbackHelper
                 'message' => $params->get('simplacallback_ajax_success_msg', JText::_( 'MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_DEFAULT' ))
             ));
             die();
-        }
-        else
-        {
+        } else {
             echo json_encode(array(
                 'success' => false,
                 'error' => true,
