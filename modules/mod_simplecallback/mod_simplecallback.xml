@@ -22,6 +22,7 @@
     <media folder="media/mod_simplecallback" destination="mod_simplecallback">
         <folder>css</folder>
         <folder>js</folder>
+        <folder>images</folder>
     </media>
     <languages>
         <language tag="en-GB">language/en-GB/en-GB.mod_simplecallback.sys.ini</language>
