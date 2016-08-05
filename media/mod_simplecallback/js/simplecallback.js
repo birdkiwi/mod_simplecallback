@@ -201,7 +201,7 @@
 
                 modalWindow.fadeIn();
                 modalWindow.animate({
-                    top: $(window).scrollTop() + ($(window).height() - modalWindowHeight)/2
+                    top: window.pageYOffset + (window.innerHeight - modalWindowHeight)/2
                 });
             },
             hide: function() {
