@@ -54,7 +54,7 @@ $show_title = $module->showtitle;
             <label>
                 <?php echo $params->get('simplecallback_message_field_label'); ?>
             </label>
-            <textarea type="text" name="simplecallback_message" class="input-block-level" autocomplete="off"></textarea>
+            <textarea name="simplecallback_message" class="input-block-level" autocomplete="off"></textarea>
         </div>
     <?php endif; ?>
 
