@@ -186,10 +186,10 @@
 
         var simplecallback = {
             show: function(id, customData) {
-                if (id && $('body > #simplecallback-' + id).length > 0) {
-                    $('.simplecallback-overlay').fadeIn();
+                if (id && $('#simplecallback-' + id).length) {
+                    $('.simplecallback-overlay').addClass('active');
                 }
-                var modalWindow = (id) ? $('body > #simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
+                var modalWindow = (id) ? $('#simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
                 var modalWindowHeight = modalWindow.innerHeight();
                 var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
 
@@ -199,14 +199,11 @@
                     customDataField.val("");
                 }
 
-                modalWindow.fadeIn();
-                modalWindow.animate({
-                    top: window.pageYOffset + (window.innerHeight - modalWindowHeight)/2
-                });
+                modalWindow.addClass('active');
             },
             hide: function() {
-                $('body > [id^="simplecallback-"]').fadeOut();
-                $('.simplecallback-overlay').fadeOut();
+                $('[id^="simplecallback-"]').removeClass('active');
+                $('.simplecallback-overlay').removeClass('active');
             }
         };
 
@@ -253,14 +250,17 @@
             return false;
         });
 
+        var overlay = $('<div class="simplecallback-overlay">');
+
+        if ($('[data-simplecallback-form-overlayed]').length) {
+            $('body').append(overlay);
+        }
+
         $('[data-simplecallback-form-overlayed]').each(function() {
-            $(this).appendTo('body');
+            overlay.append( $(this) );
         });
 
-        if ($('[data-simplecallback-form-overlayed]').length > 0) {
-            var overlay = $('<div class="simplecallback-overlay">');
-            $('body').prepend(overlay);
-        }
+        console.log(overlay);
 
         $(document).on('click', '[data-simplecallback-open]', function() {
             var formId = $(this).data('simplecallback-open');

@@ -1,26 +1,45 @@
 .simplecallback-overlay {
     display: none;
+    opacity: 0;
     position: fixed;
+    align-items: center;
+    justify-content: center;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 10000;
+    transition: all 200ms;
+}
+
+.simplecallback-overlay.active {
+    display: flex;
+    opacity: 1;
+    animation: simplecallbackOverlay .3s ease-in-out;
+    animation-iteration-count: 1
 }
 
 .simplecallback-overlayed {
+    display: none;
+    opacity: 0;
+    transform: translateY(-50px);
+    position: relative;
     width: 260px;
-    position: absolute;
-    left: 50%;
-    top: 30px;
-    margin-left: -130px;
     z-index: 10010;
     background: #fff;
     padding: 30px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0,0,0, 0.5);
+    transition: all 400ms;
+}
+
+.simplecallback-overlayed.active {
+    display: block;
+    transform: none;
+    opacity: 1;
+    transition: all 400ms;
 }
 
 .simplecallback-overlayed.simplecallback-loading::before {
@@ -74,4 +93,37 @@
 /* BZZZzzZzz... Honeypot Input! :) */
 .simplecallback-username {
     display: none !important;
+}
+
+/* Animations! */
+@keyframes simplecallbackOverlay {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes simplecallbackWindow {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
 }

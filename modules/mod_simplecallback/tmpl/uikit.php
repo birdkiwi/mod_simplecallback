@@ -20,11 +20,11 @@ $show_title = $module->showtitle;
 <form
     id="simplecallback-<?php echo $module->id; ?>"
     action="<?php echo JURI::root(); ?>index.php?option=com_ajax&module=simplecallback&format=json"
-    class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
+    class="uk-form-stacked simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
     method="post"
     <?php if (!empty($phone_mask) && $phone_mask != '') { echo "data-simplecallback-phone-mask='$phone_mask'"; } ?>
     data-simplecallback-form <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed"; } ?>
-    >
+>
 
     <?php if ($overlayed == 1) :?>
         <div class="simplecallback-loading-svg">
@@ -36,32 +36,38 @@ $show_title = $module->showtitle;
         } ?>
     <?php endif; ?>
 
-    <div class="control-group">
-        <label>
+    <div class="uk-margin-bottom">
+        <label class="uk-form-label uk-text-left">
             <?php echo $params->get('simplecallback_name_field_label'); ?>
-            <input type="text" name="simplecallback_name" required class="input-block-level" autocomplete="off" />
         </label>
+        <div class="uk-form-controls">
+            <input type="text" name="simplecallback_name" required class="uk-input" autocomplete="off" />
+        </div>
     </div>
-    <div class="control-group">
-        <label>
+    <div class="uk-margin-bottom">
+        <label class="uk-form-label uk-text-left">
             <?php echo $params->get('simplecallback_phone_field_label'); ?>
-            <input type="text" name="simplecallback_phone" required class="input-block-level" autocomplete="off" />
         </label>
+        <div class="uk-form-controls">
+            <input type="text" name="simplecallback_phone" required class="uk-input" autocomplete="off" />
+        </div>
     </div>
 
     <?php if ($message_enabled == 1) : ?>
-        <div class="control-group">
-            <label>
+        <div class="uk-margin-bottom">
+            <label class="uk-form-label uk-text-left">
                 <?php echo $params->get('simplecallback_message_field_label'); ?>
             </label>
-            <textarea name="simplecallback_message" class="input-block-level" autocomplete="off"></textarea>
+            <div class="uk-form-controls">
+                <textarea name="simplecallback_message" class="uk-textarea" autocomplete="off" style="height: 80px; resize: vertical;"></textarea>
+            </div>
         </div>
     <?php endif; ?>
 
     <?php if ($captcha_enabled == 1) : ?>
-        <div class="control-group">
+        <div class="uk-margin-bottom uk-text-left">
             <img src="<?php echo JUri::base() . 'modules/mod_simplecallback/captcha.php?id=' . $module->id; ?>" width="150" height="40" alt="captcha" class="simplecallback-captcha">
-            <input type="text" name="simplecallback_captcha" required class="input-block-level" autocomplete="off" />
+            <input type="text" name="simplecallback_captcha" required class="uk-input" autocomplete="off" />
         </div>
     <?php endif; ?>
 
@@ -73,6 +79,6 @@ $show_title = $module->showtitle;
         <input type="hidden" name="simplecallback_page_title" value="<?php echo $document->getTitle(); ?>">
         <input type="hidden" name="simplecallback_page_url" value="<?php echo JUri::getInstance()->toString(); ?>">
         <input type="hidden" name="simplecallback_custom_data" value="">
-        <button type="submit" class="btn"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
+        <button type="submit" class="uk-button uk-button-primary uk-width-1-1"><?php echo $params->get('simplecallback_submit_field_label'); ?></button>
     </div>
 </form>
