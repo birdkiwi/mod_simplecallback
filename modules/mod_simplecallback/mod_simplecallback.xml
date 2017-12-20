@@ -4,7 +4,7 @@
     <author>Alexey Startler</author>
     <authorEmail>info@startler.ru</authorEmail>
     <authorUrl>https://github.com/birdkiwi/mod_simplecallback</authorUrl>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <creationDate>24.02.2015</creationDate>
     <description>MOD_SIMPLECALLBACK_GENERAL_DESC</description>
     <files>
@@ -36,14 +36,14 @@
                     name="basic"
                     label="MOD_SIMPLECALLBACK_PARAMS_LABEL"
                     description="MOD_SIMPLECALLBACK_PARAMS_DESC"
-                    >
+            >
                 <field
                         type="radio"
                         name="simplecallback_overlay"
                         label="MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_LABEL"
                         description="MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_DESC"
                         default="0"
-                        >
+                >
                     <option value="0">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_MODULE</option>
                     <option value="1">MOD_SIMPLECALLBACK_RECEPIENTS_OVERLAY_OVERLAY</option>
                 </field>
@@ -53,11 +53,11 @@
                         label="MOD_SIMPLECALLBACK_CAPTCHA_LABEL"
                         description="MOD_SIMPLECALLBACK_CAPTCHA_DESC"
                         default="0"
-                        >
+                >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
-                <field type="spacer" name="myspacer1" class="text" label="MOD_SIMPLECALLBACK_FORM_PARAMS" />
+                <field type="spacer" name="myspacer1" class="text" label="MOD_SIMPLECALLBACK_FORM_PARAMS"/>
                 <field
                         type="text"
                         name="simplecallback_name_field_label"
@@ -65,7 +65,7 @@
                         description="MOD_SIMPLECALLBACK_NAME_FIELD_LABEL_DESC"
                         default="MOD_SIMPLECALLBACK_NAME_FIELD"
                         translate_default="true"
-                        >
+                >
                 </field>
                 <field
                         type="text"
@@ -74,15 +74,15 @@
                         description="MOD_SIMPLECALLBACK_PHONE_FIELD_LABEL_DESC"
                         default="MOD_SIMPLECALLBACK_PHONE_FIELD"
                         translate_default="true"
-                        >
+                >
                 </field>
                 <field
                         type="text"
                         name="simplecallback_phone_field_mask"
                         label="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK"
                         description="MOD_SIMPLECALLBACK_PHONE_FIELD_MASK_DESC"
-                        hint="+7 (999) 999-99-99"
-                        >
+                        hint="+7 (000) 000-00-00"
+                >
                 </field>
                 <field
                         type="radio"
@@ -90,7 +90,7 @@
                         label="MOD_SIMPLECALLBACK_MESSAGE_ENABLE_LABEL"
                         description="MOD_SIMPLECALLBACK_MESSAGE_ENABLE_DESC"
                         default="0"
-                        >
+                >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
@@ -101,7 +101,7 @@
                         description="MOD_SIMPLECALLBACK_MESSAGE_FIELD_LABEL_DESC"
                         default="MOD_SIMPLECALLBACK_MESSAGE_FIELD"
                         translate_default="true"
-                        >
+                >
                 </field>
                 <field
                         type="text"
@@ -110,16 +110,16 @@
                         description="MOD_SIMPLECALLBACK_SUBMIT_FIELD_LABEL_DESC"
                         default="MOD_SIMPLECALLBACK_SUBMIT_FIELD"
                         translate_default="true"
-                        >
+                >
                 </field>
-                <field type="spacer" name="myspacer2" class="text" label="MOD_SIMPLECALLBACK_EMAIL_PARAMS" />
+                <field type="spacer" name="myspacer2" class="text" label="MOD_SIMPLECALLBACK_EMAIL_PARAMS"/>
                 <field
                         type="text"
                         name="simplecallback_emails"
                         label="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_LABEL"
                         description="MOD_SIMPLECALLBACK_RECEPIENTS_EMAILS_DESC"
                         default=""
-                        >
+                >
                 </field>
                 <field
                         type="text"
@@ -128,9 +128,9 @@
                         description="MOD_SIMPLECALLBACK_EMAIL_SUBJECT_DESC"
                         default="MOD_SIMPLECALLBACK_EMAIL_SUBJECT_DEFAULT"
                         translate_default="true"
-                        >
+                >
                 </field>
-                <field type="spacer" name="myspacer3" class="text" label="MOD_SIMPLECALLBACK_AJAX_MESSAGES" />
+                <field type="spacer" name="myspacer3" class="text" label="MOD_SIMPLECALLBACK_AJAX_MESSAGES"/>
                 <field
                         type="textarea"
                         rows="3"
@@ -138,7 +138,7 @@
                         label="MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_LABEL"
                         default="MOD_SIMPLECALLBACK_AJAX_MSG_SUCCESS_DEFAULT"
                         translate_default="true"
-                        >
+                >
                 </field>
                 <field
                         type="textarea"
@@ -147,7 +147,7 @@
                         label="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_LABEL"
                         default="MOD_SIMPLECALLBACK_AJAX_MSG_ERROR_DEFAULT"
                         translate_default="true"
-                        >
+                >
                 </field>
                 <field
                         type="textarea"
@@ -156,16 +156,16 @@
                         label="MOD_SIMPLECALLBACK_CAPTCHA_MSG_ERROR_LABEL"
                         default="MOD_SIMPLECALLBACK_CAPTCHA_MSG_ERROR_DEFAULT"
                         translate_default="true"
-                        >
+                >
                 </field>
-                <field type="spacer" name="myspacer4" class="text" label="MOD_SIMPLECALLBACK_SMSRU_INTEGRATION" />
+                <field type="spacer" name="myspacer4" class="text" label="MOD_SIMPLECALLBACK_SMSRU_INTEGRATION"/>
                 <field
                         type="radio"
                         name="simplecallback_smsru_enable"
                         label="MOD_SIMPLECALLBACK_SMSRU_ENABLE_LABEL"
                         description="MOD_SIMPLECALLBACK_SMSRU_ENABLE_DESC"
                         default="0"
-                        >
+                >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
@@ -174,32 +174,32 @@
                         name="simplecallback_smsru_api_id"
                         label="MOD_SIMPLECALLBACK_SMSRU_API_ID_LABEL"
                         description="MOD_SIMPLECALLBACK_SMSRU_API_ID_DESC"
-                        >
+                >
                 </field>
                 <field
                         type="text"
                         name="simplecallback_smsru_phone"
                         label="MOD_SIMPLECALLBACK_SMSRU_PHONE_LABEL"
                         description="MOD_SIMPLECALLBACK_SMSRU_PHONE_DESC"
-                        >
+                >
                 </field>
             </fieldset>
             <fieldset name="advanced">
                 <field
-					name="layout"
-					type="modulelayout"
-					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
                 <field
                         name="moduleclass_sfx"
                         type="textarea" rows="3"
                         label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
                 <field
                         name="layout"
                         type="modulelayout"
                         label="JFIELD_ALT_LAYOUT_LABEL"
-                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
             </fieldset>
         </fields>
     </config>
