@@ -657,13 +657,14 @@
                         alert(data.message);
                         //console.log(data.message);
                     }
-                    
+
                     form.removeClass('simplecallback-loading');
                     submitBtn.attr('disabled', false);
+                },
+                complete: function () {
+                    captcha.attr('src', captcha.attr('src') + '&rand=' + Math.random());
                 }
             });
-
-            captcha.attr('src', captcha.attr('src') + '?rand=' + Math.random());
 
             return false;
         });

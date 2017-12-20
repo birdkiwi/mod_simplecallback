@@ -1,6 +1,6 @@
 {
   "name": "mod_simplecallback",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Простой модуль обратного звонка или для обратной связи. Совместим с Joomla 3.0 и выше.",
   "main": "index.js",
   "scripts": {
