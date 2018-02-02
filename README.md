@@ -6,8 +6,6 @@
 ![mod_simplecallback screenshot](screenshot-2.png)
 ![mod_simplecallback screenshot](screenshot-3.png)
 
-Демо: [joomla.startler.ru](http://joomla.startler.ru/)
-
  :paperclip: Скачать модуль: [Все версии](https://github.com/birdkiwi/mod_simplecallback/releases/)
  :paperclip: Скачать компонент: [Все версии](https://github.com/birdkiwi/com_simplecallback/releases/)
 
