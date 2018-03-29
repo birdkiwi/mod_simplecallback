@@ -39,14 +39,14 @@ $show_title = $module->showtitle;
     <div class="control-group">
         <label>
             <?php echo $params->get('simplecallback_name_field_label'); ?>
-            <input type="text" name="simplecallback_name" required class="input-block-level" autocomplete="off" />
         </label>
+        <input type="text" name="simplecallback_name" required class="input-block-level" autocomplete="off" />
     </div>
     <div class="control-group">
         <label>
-            <?php echo $params->get('simplecallback_phone_field_label'); ?>
-            <input type="text" name="simplecallback_phone" required class="input-block-level" autocomplete="off" />
+            <?php echo $params->get('simplecallback_phone_field_label'); ?>       
         </label>
+            <input type="text" name="simplecallback_phone" required class="input-block-level" autocomplete="off" />
     </div>
 
     <?php if ($message_enabled == 1) : ?>
