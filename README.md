@@ -76,6 +76,49 @@
 </a>
 ```
 
+**События JS:**
+
+События могут быть полезны, если вы пользуетесь Яндекс.Метрикой или Google Analytics. Можно отследить следующие события: 
+
+`simplecallback:beforeShow` — событие до открытия модального окна
+
+`simplecallback:afterShow` — событие после открытия модального окна
+
+`simplecallback:success` — событие после успешной отправки данных и получения ответа с сервера с валидными данными
+
+`simplecallback:error` — событие в случае сетевой ошибки, либо parseError
+
+`simplecallback:error` — событие в случае сетевой ошибки, либо parseError
+
+Примеры использования событий:
+
+```
+$(document).on('simplecallback:beforeShow', function(event, data) {
+    console.log(data);
+    alert('Simplecallback beforeShow event triggered \nmoduleId: ' + data.moduleId + ' \ncustomData: ' + data.customData);
+});
+    
+$(document).on('simplecallback:afterShow', function(event, data) {
+    console.log(data);
+    alert('Simplecallback afterShow event triggered \nmoduleId: ' + data.moduleId + ' \ncustomData: ' + data.customData);
+});
+
+$(document).on('simplecallback:success', function(event, data) {
+    console.log(data);
+    alert('Simplecallback success event triggered \nform: ' + data.form + ' \nmoduleId: ' + data.moduleId + ' \ncustomData: ' + data.customData + ' \ndata: ' + data.data);
+});
+
+$(document).on('simplecallback:error', function(event, data) {
+    console.log(data);
+    alert('Simplecallback error event triggered \nform: ' + data.form + ' \nmoduleId: ' + data.moduleId + ' \ncustomData: ' + data.customData + ' \ndata: ' + data.data + ' \njqXHR: ' + data.jqXHR + ' \ntextStatus: ' + data.textStatus + '\n errorThrown: ' + data.errorThrown);
+});
+
+$(document).on('simplecallback:complete', function(event, data) {
+    console.log(data);
+    alert('Simplecallback complete event triggered \nform: ' + data.form + ' \nmoduleId: ' + data.moduleId + ' \ncustomData: ' + data.customData + ' \ndata: ' + data.data + ' \njqXHR: ' + data.jqXHR + ' \ntextStatus: ' + data.textStatus);
+});
+```
+
 **Дизайн, шаблоны и пр:**
 
 Модуль создан без особого прицела на визуальный дизайн, т.к. дизайн каждого сайта индивидуален, поэтому вам предоставляется полная свобода для оформления и верстки. 

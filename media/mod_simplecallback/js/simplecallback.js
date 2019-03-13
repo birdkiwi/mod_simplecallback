@@ -601,11 +601,15 @@
 
         var simplecallback = {
             show: function(id, customData) {
+                $(document).trigger("simplecallback:beforeShow", {
+                    moduleId: id,
+                    customData: customData
+                });
+
                 if (id && $('#simplecallback-' + id).length) {
                     $('.simplecallback-overlay').addClass('active');
                 }
                 var modalWindow = (id) ? $('#simplecallback-' + id) : $('[data-simplecallback-form-overlayed]').first();
-                var modalWindowHeight = modalWindow.innerHeight();
                 var customDataField = modalWindow.find('input[name="simplecallback_custom_data"]');
 
                 if (customData) {
@@ -615,10 +619,76 @@
                 }
 
                 modalWindow.addClass('active');
+
+                $(document).trigger("simplecallback:afterShow", {
+                    moduleId: id,
+                    customData: customData
+                });
             },
             hide: function() {
                 $('[id^="simplecallback-"]').removeClass('active');
                 $('.simplecallback-overlay').removeClass('active');
+            },
+            submit: function (id) {
+                var form = $('#simplecallback-' + id),
+                    actionUrl = form.attr('action'),
+                    errorMsg = form.attr('data-simplecallback-form-error-msg'),
+                    captcha = form.find('.simplecallback-captcha'),
+                    submitBtn = form.find('[type="submit"]');
+
+                form.addClass('simplecallback-loading');
+                submitBtn.attr('disabled', true);
+
+                $.ajax({
+                    type: "POST",
+                    url: actionUrl,
+                    data: form.serialize(),
+                    dataType: 'json',
+                    success: function(data, textStatus, jqXHR) {
+                        if(data.error === false) {
+                            $(document).trigger("simplecallback:success", {
+                                form: form,
+                                moduleId: parseInt(form.find('input[name="module_id"]').val()),
+                                customData: form.find('input[name="simplecallback_custom_data"]').val(),
+                                data: data
+                            });
+
+                            alert(data.message);
+                            form[0].reset();
+                            simplecallback.hide();
+                        } else {
+                            alert(data.message);
+                        }
+
+                        form.removeClass('simplecallback-loading');
+                        submitBtn.attr('disabled', false);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $(document).trigger("simplecallback:error", {
+                            form: form,
+                            moduleId: parseInt(form.find('input[name="module_id"]').val()),
+                            customData: form.find('input[name="simplecallback_custom_data"]').val(),
+                            jqXHR: jqXHR,
+                            textStatus: textStatus,
+                            errorThrown: errorThrown
+                        });
+
+                        alert(errorMsg);
+                        form.removeClass('simplecallback-loading');
+                        submitBtn.attr('disabled', false);
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        captcha.attr('src', captcha.attr('src') + '&rand=' + Math.random());
+
+                        $(document).trigger("simplecallback:complete", {
+                            form: form,
+                            moduleId: parseInt(form.find('input[name="module_id"]').val()),
+                            customData: form.find('input[name="simplecallback_custom_data"]').val(),
+                            jqXHR: jqXHR,
+                            textStatus: textStatus
+                        });
+                    }
+                });
             }
         };
 
@@ -635,36 +705,9 @@
         });
 
         $('[data-simplecallback-form]').on('submit', function() {
-            var form = $(this),
-                actionUrl = form.attr('action'),
-                captcha = form.find('.simplecallback-captcha'),
-                submitBtn = form.find('[type="submit"]');
+            var formId = parseInt($(this).find('input[name="module_id"]').val());
 
-            form.addClass('simplecallback-loading');
-            submitBtn.attr('disabled', true);
-
-            $.ajax({
-                type: "POST",
-                url: actionUrl,
-                data: form.serialize(),
-                dataType: 'json',
-                success: function(data) {
-                    if(data.error === false) {
-                        alert(data.message);
-                        form[0].reset();
-                        simplecallback.hide();
-                    } else {
-                        alert(data.message);
-                        //console.log(data.message);
-                    }
-
-                    form.removeClass('simplecallback-loading');
-                    submitBtn.attr('disabled', false);
-                },
-                complete: function () {
-                    captcha.attr('src', captcha.attr('src') + '&rand=' + Math.random());
-                }
-            });
+            simplecallback.submit(formId);
 
             return false;
         });
@@ -678,8 +721,6 @@
         $('[data-simplecallback-form-overlayed]').each(function() {
             overlay.append( $(this) );
         });
-
-        console.log(overlay);
 
         $(document).on('click', '[data-simplecallback-open]', function() {
             var formId = $(this).data('simplecallback-open');
@@ -699,18 +740,17 @@
         window.addEventListener("load", function (event) {
             if (window.location.hash.indexOf('#simplecallback-') > -1) {
                 var moduleId = parseInt( window.location.hash.replace(/[^0-9\.]/g, ''), 10 );
-                //console.log(moduleId);
                 simplecallback.show(moduleId);
             }
         }, false);
 
         $(document).on('click', 'a[href^="#simplecallback-"]', function() {
             var moduleId = parseInt( $(this).attr('href').replace(/[^0-9\.]/g, ''), 10 );
-            //console.log(moduleId);
-            simplecallback.show(moduleId);
+            var customData = $(this).data('simplecallback-custom-data');
+
+            simplecallback.show(moduleId, customData);
 
             return false;
         });
-
     });
 })(jQuery);

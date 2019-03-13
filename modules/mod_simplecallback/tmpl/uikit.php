@@ -23,7 +23,9 @@ $show_title = $module->showtitle;
     class="uk-form-stacked simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
     method="post"
     <?php if (!empty($phone_mask) && $phone_mask != '') { echo "data-simplecallback-phone-mask='$phone_mask'"; } ?>
-    data-simplecallback-form <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed"; } ?>
+    data-simplecallback-form
+    <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed"; } ?>
+    data-simplecallback-form-error-msg="<?php echo $error_msg; ?>"
 >
 
     <?php if ($overlayed == 1) :?>
@@ -41,7 +43,7 @@ $show_title = $module->showtitle;
             <?php echo $params->get('simplecallback_name_field_label'); ?>
         </label>
         <div class="uk-form-controls">
-            <input type="text" name="simplecallback_name" required class="uk-input" autocomplete="off" />
+            <input type="text" name="simplecallback_name" required class="uk-input">
         </div>
     </div>
     <div class="uk-margin-bottom">
@@ -49,7 +51,7 @@ $show_title = $module->showtitle;
             <?php echo $params->get('simplecallback_phone_field_label'); ?>
         </label>
         <div class="uk-form-controls">
-            <input type="text" name="simplecallback_phone" required class="uk-input" autocomplete="off" />
+            <input type="text" name="simplecallback_phone" required class="uk-input">
         </div>
     </div>
 
@@ -59,7 +61,7 @@ $show_title = $module->showtitle;
                 <?php echo $params->get('simplecallback_message_field_label'); ?>
             </label>
             <div class="uk-form-controls">
-                <textarea name="simplecallback_message" class="uk-textarea" autocomplete="off" style="height: 80px; resize: vertical;"></textarea>
+                <textarea name="simplecallback_message" class="uk-textarea" style="height: 80px; resize: vertical;"></textarea>
             </div>
         </div>
     <?php endif; ?>

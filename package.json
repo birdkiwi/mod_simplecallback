@@ -1,6 +1,6 @@
 {
   "name": "mod_simplecallback",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "Простой модуль обратного звонка или для обратной связи. Совместим с Joomla 3.0 и выше.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/birdkiwi/mod_simplecallback",
   "dependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.3",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0"
