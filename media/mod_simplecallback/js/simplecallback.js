@@ -656,6 +656,9 @@
                             alert(data.message);
                             form[0].reset();
                             simplecallback.hide();
+                            if (window.grecaptcha) {
+                                grecaptcha.reset();
+                            }
                         } else {
                             alert(data.message);
                         }

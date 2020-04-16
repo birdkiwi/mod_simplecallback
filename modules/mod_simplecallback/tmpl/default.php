@@ -10,7 +10,6 @@ $document->addScript(JUri::base() . 'media/mod_simplecallback/js/simplecallback.
 JHTML::_('behavior.formvalidation');
 $overlayed = $params->get('simplecallback_overlay');
 $message_enabled = $params->get('simplecallback_message', 0);
-$captcha_enabled = $params->get('simplecallback_captcha', 0);
 $phone_mask = $params->get('simplecallback_phone_field_mask');
 $header_tag = $params->get('header_tag', 'h3');
 $header_class = $params->get('header_class', '');
@@ -19,15 +18,15 @@ $error_msg = $params->get('simplacallback_ajax_error_msg', 'Network error...');
 ?>
 
 <form
-    id="simplecallback-<?php echo $module->id; ?>"
-    action="<?php echo JURI::root(); ?>index.php?option=com_ajax&module=simplecallback&format=json"
-    class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
-    method="post"
+        id="simplecallback-<?php echo $module->id; ?>"
+        action="<?php echo JURI::root(); ?>index.php?option=com_ajax&module=simplecallback&format=json"
+        class="form-inline simplecallback<?php echo $moduleclass_sfx ?> <?php if ($overlayed == 1) { echo "simplecallback-overlayed"; } ?>"
+        method="post"
     <?php if (!empty($phone_mask) && $phone_mask != '') { echo "data-simplecallback-phone-mask='$phone_mask'"; } ?>
-    data-simplecallback-form
+        data-simplecallback-form
     <?php if ($overlayed == 1) { echo "data-simplecallback-form-overlayed"; } ?>
-    data-simplecallback-form-error-msg="<?php echo $error_msg; ?>"
-    >
+        data-simplecallback-form-error-msg="<?php echo $error_msg; ?>"
+>
 
     <?php if ($overlayed == 1) :?>
         <div class="simplecallback-loading-svg">
@@ -61,10 +60,15 @@ $error_msg = $params->get('simplacallback_ajax_error_msg', 'Network error...');
         </div>
     <?php endif; ?>
 
-    <?php if ($captcha_enabled == 1) : ?>
+    <?php if ($captcha_enabled === '1') : ?>
         <div class="control-group">
             <img src="<?php echo JUri::base() . 'modules/mod_simplecallback/captcha.php?id=' . $module->id; ?>" width="150" height="40" alt="captcha" class="simplecallback-captcha">
             <input type="text" name="simplecallback_captcha" required class="input-block-level" autocomplete="off">
+        </div>
+    <?php endif; ?>
+    <?php if ($captcha_enabled === '2') : ?>
+        <div class="control-group">
+            <div id="dynamic_recaptcha_<?php echo $module->id; ?>" class="g-recaptcha" data-sitekey="<?php echo $captcha_pubkey; ?>" data-theme="<?php echo $captcha_theme2; ?>" data-size="<?php echo $captcha_size; ?>"></div>
         </div>
     <?php endif; ?>
 

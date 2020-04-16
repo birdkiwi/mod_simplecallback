@@ -55,7 +55,8 @@
                         default="0"
                 >
                     <option value="0">JNO</option>
-                    <option value="1">JYES</option>
+                    <option value="1">Simple</option>
+                    <option value="2">Google Recaptcha</option>
                 </field>
                 <field type="spacer" name="myspacer1" class="text" label="MOD_SIMPLECALLBACK_FORM_PARAMS"/>
                 <field
