@@ -699,8 +699,9 @@
 
         $('[data-simplecallback-form]').each(function() {
             var maskValue = $(this).data('simplecallback-phone-mask');
+            var formId = parseInt($(this).find('input[name="module_id"]').val());
             if (maskValue) {
-                $(this).find('[name="simplecallback_phone"]').mask(maskValue, {
+                $('#simplecallback-' + formId).find('[name="simplecallback_phone"]').mask(maskValue, {
                     placeholder: maskValue,
                     clearIfNotMatch: true
                 });
