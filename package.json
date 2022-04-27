@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/birdkiwi/mod_simplecallback",
   "dependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.2",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0"
